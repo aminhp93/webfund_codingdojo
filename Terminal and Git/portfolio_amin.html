@@ -12,19 +12,70 @@
 			background-image: url('images/modern-home-interior-design-for-work-room-workroom-design-modern.jpg');
 			height: 1000px;
 			padding: 20px 30px;
-
 		}
-
+		#section1{
+			width: 300px;
+			background-color: orange;
+		}
+		#section1, #section2, #section3, #section4{
+			width: 250px;
+			height: 1000px;
+			display: inline-block;
+			vertical-align: top;
+		}
+		#section2{
+			background-color: blue;
+		}
+		#section3{
+			background-color: pink;
+		}
+		#section4{
+			background-color: purple;
+		}
 	</style>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(document).on('click', '.link1', function(){
+				$('#section2').toggle();
+			})
+			$(document).on('click', '.link2', function(){
+				$('#section3').toggle();
+			})
+			$(document).on('click', '.link3', function(){
+				$('#section4').toggle();
+			})
+		})
+	</script>
 </head>
 <body>
 	<div id="container">
-		<h3>Short personal summary: Nothing is fancy than wording. Just saying.</h3>
+		<div id="header">
+			<h3>Short personal summary: Nothing is fancy than wording. Just saying.</h3>
+			<p>What do you want to know about me - a designer?</p>
+		</div>
+		<div id="section1">
+			<p>Some projects on</p>
+			<li class="link1"><a href="">GitHub</a></li>
+			<li class="link1"><a href="">LinkedIn</a></li>
+			<li class="link1"><a href="" target="_blank">Resume</a></li>
+		</div>
+		<div id="section2">
+			<p>Some projects on</p>
+			<li class="link2"><a chref="">GitHub</a></li>
+			<li class="link2"><a href="">LinkedIn</a></li>
+			<li class="link2"><a href="" target="_blank">Resume</a></li>
+		</div>
+		<div id="section3">
+			<p>Some projects on</p>
+			<li class="link3"><a chref="">GitHub</a></li>
+			<li class="link3"><a href="">LinkedIn</a></li>
+			<li class="link3"><a href="" target="_blank">Resume</a></li>
+		</div>
+		<div id="section4"></div>
 		<!-- <img src="images/unknown" alt="profile_picture"> -->
 		<div>
-			<li><a href="">GitHub</a></li>
-			<li><a href="">LinkedIn</a></li>
-			<li><a href="" target="_blank">Resume</a></li>
+			<p>Content</p>
 		</div>
 	</div>
 </body>

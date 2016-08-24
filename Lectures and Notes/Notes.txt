@@ -1,0 +1,7 @@
+	Day 1 - Aug/15/2016
+
+20-minute rule
+
+Week 1: HTML, CSS
+Week 2: jQuery, gitHub, mySQL
+Week 3: mySQL, project( game or portfolio)

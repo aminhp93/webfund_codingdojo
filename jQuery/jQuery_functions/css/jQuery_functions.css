@@ -1,0 +1,57 @@
+#click p{
+	color: red;
+	cursor: pointer;
+}
+#click p:hover{
+	background-color: yellow;
+}
+#focus input{
+	display: block;
+}
+#focus span{
+	display: none;
+}
+#addClass p{
+	margin: 8px;
+}
+#addClass .selected{
+	color: blue;
+}
+#addClass .highlight{
+	background-color: yellow;
+}
+#addClass .red{
+	background-color: red;
+}
+#addClass .red.green{
+	background-color: green;
+}
+#addClass div{
+	background-color: white;
+}
+#val p{
+	color: red;
+}
+#val b{
+	color: blue;
+}
+#val input{
+	display: block;
+	margin-top: 20px;
+}
+#other-3{
+	color: orange;
+	margin: 20px;
+}
+#text p{
+	color: green;
+}
+#text b{
+	color: red;
+}
+#attr p{
+	margin: 20px 0 0;
+}
+#attr b{
+	color: blue;
+}

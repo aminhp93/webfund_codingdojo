@@ -1,0 +1,23 @@
+ Open terminal and navigate to your desktop
+
+ Create a new folder and call it 'test'$ mkdir test
+
+ Create two files, 'index.html' & 'styles.css'$ touch index.html style.css
+
+ Create your git repository and make an initial commit with a comment$ git init
+ $ git add .
+ $ git commit -m 'first commit'
+
+ Write some html in the html file, commit the changes with the message 'update html'$ git add .
+ $ git commit -m 'update html'
+
+ Add some style to your css file and commit the changes with the message 'update css'$ git add .
+ $ git commit -m 'update css'
+
+ View the logs to see your commit history$ git log
+
+ Revert to your last commit, make changes, and recommit$ git revert -n HEAD
+ $ git add .
+ $ git commit -m 'make second changes'
+
+ Write your commands in a text file and upload it below

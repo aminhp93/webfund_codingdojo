@@ -1,0 +1,30 @@
+
+#container{
+	margin-left: 50px;
+}
+label {
+    float: left;
+    width: 50px;
+	position: absolute;
+	left: 75px;
+}
+
+input {
+    display: block;
+	padding-left: 50px;
+	margin: 10px;
+	border: 1px solid black;
+}
+
+#submit {
+    background-color: rgb(32, 113, 255);
+	color: white;
+	box-shadow: 5px 5px black;
+	padding: 10px;
+}
+
+#warning {
+    display: none;
+}
+
+

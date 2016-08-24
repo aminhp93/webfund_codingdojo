@@ -1,0 +1,42 @@
+#container{
+	background-color: yellow;
+	display: inline-block;
+	position: relative;
+}
+#box-1, #box-2, #box-3{
+	height: 100px;
+	width: 100px;
+	margin: 10px;
+	display: inline-block;
+}
+#box-1{
+	background-color: green; 
+	position: absolute;
+	top: 40px;
+}
+#box-2{
+	background-color: pink;
+	position: relative;
+	top: 20px;
+	left: 20px;
+}
+#box-3{
+	background-color: blue;
+}
+#center-me-1{
+	background-color: red;
+	height: 100px;
+	width: 100px;
+	margin: auto;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	top: 0;
+	right: 0;
+}
+#center-me-2{
+	background-color: black;
+	height: 50px;
+	width: 50px;
+	margin: 0 auto;
+}

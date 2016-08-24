@@ -1,0 +1,19 @@
+Create a new repo on GitHub and call it basic_repo
+
+Create a local repository also called basic_repo$ mdkir basic_repo
+$ cd basic_repo
+$ git init
+
+Create some files inside your local repo and add some content on them$ touch amin.html amin.txt
+
+Add, commit, and push these changes to GitHub$ git add .
+$ git commit -m 'first commit'
+$ git remote add origin https://github.com/aminhp93/basic_repo
+$ git push -u origin master
+
+Make some more changes to the local copy of your file and push them to GitHub$ touch amin.php
+$ git push
+
+Upload a simple .txt file that outlines the steps you took
+
+Go to your GitHub account and see your new repo and the changes you've made

@@ -1,0 +1,38 @@
+* {
+    padding: 0px;
+    margin: 20px;
+}
+#users{
+    border: 2px solid black;
+}
+
+#users th{
+    padding-right: 50px;
+    /*background-color: blue;*/
+}
+#content{
+    width: 500px;
+}
+#content h2{
+    border-bottom: 2px solid black;
+}
+label {
+    float: left;
+    text-align: right;
+    clear: both;
+    width: 280px;
+    margin: 5px;
+    background-color: orange;
+    display: inline;
+}
+
+input {
+    float: right;
+    margin: 5px;
+}
+
+input[type="submit"] {
+    clear: both;
+}
+
+

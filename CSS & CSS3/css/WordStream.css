@@ -1,0 +1,212 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	font-family: Tahoma;
+}
+#container{
+	width: 960px;
+	margin: 0 auto;
+	background-color: white;
+}
+#navigation{
+	margin: 0 0 0 400px;
+}	
+	#navigation button{
+		color: white;
+		background-color: rgb(25, 132, 235);
+		width: 40px;
+		height: 30px;
+		vertical-align: top;
+		border: 1px solid silver;
+		border-radius: 5px;
+		margin-left: 10px;
+	}
+	#navigation ul{
+		display: inline-block;
+		border: 1px solid silver;
+		border-radius: 5px;
+		padding: 0px 0 5px 10px;
+		background-color: gainsboro;
+	}
+	#navigation li{
+		display: inline;
+	}
+	#navigation li:after{
+		content: "|";
+		font-size: 20px;
+	}
+	#navigation li:last-child:after{
+		content: none;
+	}
+	#navigation a{
+		text-decoration: none;
+		color: black;
+		padding: 5px 10px 5px 5px;
+	}
+header{
+
+}	
+	header img, p{
+		display: inline-block;
+	}
+	header p{
+		font-family: ;
+		font-size: 40px;
+		color: gray;
+		margin-left: 10px; 
+	}
+	header p span{
+		color: rgb(25, 132, 235);
+	}
+	header h2{
+		color: white;
+		background-color: rgb(25, 132, 235);
+		font-size: 18px;
+		padding: 10px;
+		margin-top: 20px;
+	}
+#ads{
+	width: 200px;
+	padding: 10px;
+	margin-top: 50px;
+}
+	#ads h3{
+		color: rgb(25, 132, 235);
+		margin-bottom: 20px;
+	}
+	#ads h4{
+		color: orange;
+		font-size: 12px;
+		margin-bottom: 5px;
+	}
+	#ads p{
+		font-size: 10px;
+		margin-bottom: 20px;
+	}
+	#ads button{
+		color: white;
+		width: 200px;
+		height: 30px;
+		margin: 5px;
+		border: none;
+		border-radius: 5px;
+	}
+	#ads #schedule_demo{
+		background-color: rgb(25, 132, 235);
+	}
+	#ads #free_trial{
+		background-color: orange;
+	}
+	#ads #no_credit{
+		padding: 5px 0 10px 45px;
+		border-bottom: 2px solid silver;
+		display: block;
+	}
+	#ads a{
+		text-decoration: none;
+		color: rgb(25, 132, 235);
+	}
+#bottom-ads{
+	margin: 20px;
+	border: 1px solid silver;
+}
+	#bottom-ads h3{
+		color: rgb(25, 132, 235);
+		font-size: 12px;
+		margin: 10px 10px 0 10px;
+	}
+	#bottom-ads p{
+		margin: 10px;
+	}
+	#bottom-ads button{
+		width: 140px;
+		margin: 0 10px;
+		background-color: rgb(25, 132, 235);
+	}
+	#bottom-ads img{
+		width: 160px;
+		margin-bottom: -5px;
+	}
+#ads, #right-content{
+	display: inline-block;
+}
+#right-content{
+	width: 660px;
+	margin: 0 0 0 30px;
+}
+	#right-content a{
+		color: rgb(25, 132, 235);
+	}
+#top-content{
+	height: 70px;
+	padding: 10px;
+	border-bottom: 1px solid black;
+}
+	#top-content img, span, #contact{
+		display: inline-block;
+		vertical-align: top;
+	}
+#contact{
+	width: 200px;
+	margin: -10px -30px 0 10px;
+}
+	#contact p{
+		font-size: 10px;
+	}
+	#contact p span{
+		font-size: 23px;
+		color: rgb(25, 132, 235);
+	}
+#phone{
+	margin-left: 330px;
+}
+#middle-content{
+	padding: 10px;
+}
+	#middle-content h2{
+		color: rgb(25, 132, 235);
+		font-size: 20px;
+	}
+	#middle-content p{
+		margin: 10px 0;
+	}
+	#middle-content li{
+		margin-left: 20px;
+		margin-bottom: 10px;
+	}
+#bottom-content{
+	padding: 10px;
+}
+#get-started-today{
+	border: 3px solid rgb(25, 132, 235);
+	margin-bottom: 20px;
+}
+	#get-started-today img, #drive-more{
+		display: inline-block;
+	}
+#drive-more{
+	width: 520px;
+	margin: 10px;
+}
+	#drive-more h2{
+		color: rgb(25, 132, 235);
+		font-size: 18px;
+
+	}
+	#drive-more p{
+		font-size: 15px;
+		margin: 10px 0;
+	}
+	#drive-more button{
+		width: 200px;
+		height: 40px;
+		background-color: green;
+		color: white;
+		border: none;
+		border-radius: 10px;
+		font-size: 15px;
+	}
+#bottom-content h3{
+	margin-bottom: 10px;
+	color: rgb(25, 132, 235);
+}

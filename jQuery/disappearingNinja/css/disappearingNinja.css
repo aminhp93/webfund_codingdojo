@@ -1,0 +1,25 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+#container{
+	margin: 0 auto;
+	width: 960px;
+	/*background-color: orange;*/
+}
+h3{
+	margin: 20px;
+	font-size: 30px;
+}
+img{
+	width: 200px;
+	height: 200px;
+	margin: 10px;
+}
+button{
+	font-size: 20px;
+	background-color: green;
+	border-radius: 10px;
+	padding: 10px;
+	box-shadow: 5px 5px gray;
+}

@@ -1,0 +1,46 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+#left_content, #right_content{
+    display: inline-block;
+    vertical-align: top;
+}
+#left_content{
+    margin: 0 20px 20px 0;
+    width: 300px;
+    background-color: orange;
+}
+label {
+    float: left;
+    clear: both;
+    text-align: left;
+    display: inline;
+    width: 80px;
+}
+
+input {
+    float: left;
+
+}
+
+input[type="textarea"] {
+    clear: both;
+    width: 220px;
+    height: 100px;
+}
+
+input[type="submit"] {
+    clear: both;
+}
+.right_content{
+    width: 300px;
+    display: inline-block;
+}
+.contact{
+    margin: 10px 0;
+    border: 2px solid black;
+}
+.description{
+    display: none;
+}

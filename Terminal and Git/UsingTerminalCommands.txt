@@ -1,0 +1,22 @@
+Open Terminal
+
+Navigate to your Desktop$ cd
+
+Create a new directory, call it 'test'$ mkdir test
+
+Make files called index.html, styles.css, command.txt inside the test directory$ cd test
+$ touch index.html style.css command.txt
+
+Make a cope of index.html and call it index_2.html$ cp index.html index_2.html
+
+Navigate back to your desktop and make another directory, call it 'destination'$ cd
+$mkdir destination
+
+In the 'test' directory, remove the 'style.css' file$ rm style.css
+
+Now, check and see what files are in the 'test' and 'destination' directory$ ls -la
+
+Remove/delete the 'destination' directory$ rm -rf destination
+
+
+

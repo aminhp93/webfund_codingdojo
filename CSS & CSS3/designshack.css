@@ -1,0 +1,18 @@
+/*img{
+	float: right;
+	margin: 20px;
+}*/
+p{
+	border: solid 1px black;
+	float: left;
+	width: 220px;
+	margin: 20px;
+}
+li{
+	float: left;
+	margin: 4px;
+	display: inline;
+}
+img{
+	vertical-align: top;
+}

@@ -1,0 +1,26 @@
+/*#wrapper{
+	width: 960px;
+	background-color: yellow;
+}
+.content{
+	width: 220px;
+	height: 100px;
+	margin-bottom: 10px;
+	background-color: orange;
+	float: left;
+}
+.clear{
+	clear:both;
+}*/
+
+#wrapper{
+	width: 960px;
+	background-color: yellow;
+	overflow: hidden;
+	height: auto;
+}
+.content{
+	width: 320px;
+	background-color: orange;
+	float: left;
+}

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
 	<title>Pacman Demo</title>
@@ -55,12 +55,12 @@
 
 		<div id="score">100</div>
 	</div>
-		<!-- List of features to builde
+ -->		<!-- List of features to builde
 
 	1) Have JS display the world of brick/coin/etc
 	2) Have the pacman move up and down -->
 
-
+<!-- 
 	<script type="text/javascript">
 		var world = [
 			[2,2,2,2,2,2,2,2,2,2],
@@ -136,6 +136,155 @@
 				displayWorld();
 			}
 			console.log(e.keyCode);
+		}
+	</script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Pacman</title>
+	<style type="text/css">
+		*{
+			margin: 0px; 
+			padding: 0px;
+		}
+		.brick{
+			width: 20px;
+			height: 20px;
+			/*border: 1px solid black;*/
+			display: inline-block;
+			background-color: blue;
+		}
+		.coin{
+			width: 20px;
+			height: 20px;
+			background-color: green;
+			display: inline-block;
+			background-image: url('coin.gif');
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+		#pacman{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			background-image: url('pacman_R.gif');
+			width: 20px;
+			height: 20px;
+		}
+		.empty{
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+		}
+		#score{
+			position: absolute;
+			top: 0px;
+			left: 700px;
+			background-color: red;
+			color: white;
+			width: 470px;
+			height: 470px;
+			padding-top: 30px;
+			font-size: 300px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="pacman">
+		
+	</div>
+	<div id="world">
+		
+	</div>
+	<div id="score">
+		
+	</div>
+	<script type="text/javascript">
+		var brick = [
+		[2,2,2,2,2,2,2,2,2,2,1,2,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2],
+		[2,0,1,1,1,1,1,2,2,2,1,2,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2],
+		[2,1,2,2,1,2,2,2,2,2,1,2,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2],
+		[2,1,1,1,1,1,2,2,2,2,1,2,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2],
+		[2,1,2,2,2,1,2,2,2,2,1,2,1,1,1,1,1,2,2,2,2,2,2,1,2,2,2,2],
+		[2,1,2,2,2,1,2,2,2,2,1,2,1,1,1,1,1,2,2,2,2,2,2,1,2,2,2,2],
+		[2,1,2,2,2,1,2,2,2,2,1,2,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2],
+		[2,1,2,2,2,1,2,2,2,2,1,1,1,1,1,1,1,2,2,2,2,2,2,1,2,2,2,2],
+		[2,1,2,2,2,1,1,1,1,1,1,2,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2],
+		[2,1,2,2,2,2,2,2,2,2,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2],
+		[2,1,2,2,2,2,2,2,2,2,1,2,1,1,1,1,1,2,2,2,2,2,1,2,2,2,2,2],
+		[2,1,2,2,2,2,2,2,2,2,1,2,1,1,1,1,1,2,2,2,2,2,1,1,2,2,2,2],
+		[2,1,2,2,2,2,2,2,2,2,1,2,1,1,1,1,1,2,2,2,2,2,2,1,1,1,2,2],
+		[2,1,2,2,2,2,2,2,2,2,1,2,1,1,1,1,1,2,2,2,2,2,2,1,2,1,1,2],
+		[2,1,2,2,2,2,2,2,2,2,1,2,1,1,1,1,1,2,2,2,2,2,2,1,2,2,1,2],
+		[2,1,2,2,2,2,2,2,2,2,1,2,1,1,1,1,1,2,2,2,2,1,2,2,2,2,1,2],
+		[2,1,2,2,2,2,2,2,2,2,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+		[2,1,2,2,2,2,2,2,2,2,1,2,1,1,1,1,1,2,2,2,2,2,1,2,2,2,2,2],
+		[2,1,2,2,2,2,2,2,2,2,1,2,1,1,1,1,1,2,2,2,2,2,1,2,2,2,2,2],
+		[2,1,2,2,2,2,2,2,2,2,1,2,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2],
+		[2,2,2,2,2,2,2,2,2,2,1,2,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2],		
+		];
+
+		var pacman = {x:24, y:24};
+
+		var score = 0;
+		function displayBrick(){
+			output = '';
+			for (var i=0; i<brick.length; i++){
+				output += '\n<div>';
+				for (var j=0; j<brick[i].length; j++){
+					if (brick[i][j] == 2){
+						output += '\n<div class="brick"></div>';
+					} else if (brick[i][j] == 1) {
+						output += '\n<div class="coin"></div>';
+					} else if (brick[i][j] == 0) {
+						output += '\n<div class="empty"></div>';
+					}
+				}
+				output += '\n</div>';
+			}
+			console.log(output);
+			document.getElementById('world').innerHTML = output;
+		}
+
+		function displayPacman(){
+			document.getElementById('pacman').style.top = pacman.y + 'px';
+			document.getElementById('pacman').style.left = pacman.x + 'px';	
+			// alert('safd');
+		}
+
+		function displayScore(){
+			document.getElementById('score').innerHTML = score;
+		}
+
+		displayBrick();
+		displayPacman();
+		displayScore();
+
+		document.onkeydown = function(e){
+			if(e.keyCode == 37 && brick[pacman.y/24][pacman.x/24-1] != 2){
+				pacman.x -= 24;
+			}else if(e.keyCode == 38 && brick[pacman.y/24-1 ][pacman.x/24] != 2){
+				pacman.y -= 24;
+			}else if(e.keyCode == 39 && brick[pacman.y/24][pacman.x/24+1] != 2){
+				pacman.x += 24;
+			}else if(e.keyCode == 40 && brick[pacman.y/24+1][pacman.x/24] != 2){
+				pacman.y += 24;
+			}
+			displayPacman();
+
+			if (brick[pacman.y / 24][pacman.x /24] == 1){
+				brick[pacman.y/24][pacman.x/24] = 0;
+				displayBrick();
+				score += 100;
+				displayScore();
+			}
+	
 		}
 	</script>
 </body>

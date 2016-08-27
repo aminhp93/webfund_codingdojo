@@ -141,18 +141,20 @@
 </body>
 </html> -->
 
-
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 	<title>Pacman</title>
 	<style type="text/css">
-		*{
+		/**{
 			margin: 0px; 
 			padding: 0px;
-		}
+		}*/
 		body{
+			margin: 0px;
+			/*padding: 0px;*/
 			background-image: url('5334124871_88fcc83830_o.jpg');
 		}
 
@@ -161,15 +163,16 @@
 			width: 20px;
 			height: 20px;
 			display: inline-block;
+			margin: 0.5px;
 		}
 		.brick{
 			background-image: url('apple-20.png');
 		}
 		.coin{
-			background-image: url('facebook-icon.gif');
+			background-image: url('bitcoin_small.png');
 		}
 		.cherries{
-			background-image: url('icon-youtube.gif');	
+			background-image: url('bitcoin_small.png');	
 		}
 
 		/* characters */
@@ -280,6 +283,8 @@
 		var score = 0;
 
 		var life = 3;
+		var coin =[];
+		var marginNum = 23;
 
 		function countItems(arr, what){
 		    var count= 0, i;
@@ -320,93 +325,95 @@
 				}
 				output += '\n</div>';
 			}
-			console.log(output);
+			// console.log(output);
 			document.getElementById('world').innerHTML = output;
 		}
 
 		function displayPacman(){
-			document.getElementById('pacman').style.top = pacman.y + 'px';
-			document.getElementById('pacman').style.left = pacman.x + 'px';	
+			document.getElementById('pacman').style.top = pacman.y*marginNum + 'px';
+			document.getElementById('pacman').style.left = pacman.x*marginNum + 'px';	
+			console.log(pacman);
 		}
 
 
 		function displayGhost(){
-			document.getElementById('ghost').style.top = ghost.y + 'px';
-			document.getElementById('ghost').style.left = ghost.x + 'px';
-			document.getElementById('ghost1').style.top = ghost1.y + 'px';
-			document.getElementById('ghost1').style.left = ghost1.x + 'px';
-			document.getElementById('ghost2').style.top = ghost2.y + 'px';
-			document.getElementById('ghost2').style.left = ghost2.x + 'px';
-			document.getElementById('ghost3').style.top = ghost3.y + 'px';
-			document.getElementById('ghost3').style.left = ghost3.x + 'px';
-			document.getElementById('ghost4').style.top = ghost4.y + 'px';
-			document.getElementById('ghost4').style.left = ghost4.x + 'px';
+			document.getElementById('ghost').style.top = ghost.y*marginNum + 'px';
+			document.getElementById('ghost').style.left = ghost.x*marginNum + 'px';
+			document.getElementById('ghost1').style.top = ghost1.y*marginNum + 'px';
+			document.getElementById('ghost1').style.left = ghost1.x*marginNum + 'px';
+			document.getElementById('ghost2').style.top = ghost2.y*marginNum + 'px';
+			document.getElementById('ghost2').style.left = ghost2.x*marginNum + 'px';
+			document.getElementById('ghost3').style.top = ghost3.y*marginNum + 'px';
+			document.getElementById('ghost3').style.left = ghost3.x*marginNum + 'px';
+			document.getElementById('ghost4').style.top = ghost4.y*marginNum + 'px';
+			document.getElementById('ghost4').style.left = ghost4.x*marginNum + 'px';
+			console.log(ghost, ghost1, ghost2, ghost3, ghost4);
 		}
 
 		function moveGhost(){
 			
 			var num = Math.floor(Math.random()*4);
 
-			if (num == 0 && brick[ghost.y/24+1][ghost.x/24] != 2){
-				ghost.y += 24;
-			} else if (num == 1 && brick[ghost.y/24-1][ghost.x/24] != 2) {
-				ghost.y -= 24 ;
-			} else if (num == 2 && brick[ghost.y/24][ghost.x/24-1] != 2) {
-				ghost.x -= 24;
-			} else if (num == 3 && brick[ghost.y/24][ghost.x/24+1] != 2) {
-				ghost.x += 24;
+			if (num == 0 && brick[ghost.y+1][ghost.x] != 2){
+				ghost.y ++;
+			} else if (num == 1 && brick[ghost.y-1][ghost.x] != 2) {
+				ghost.y --;
+			} else if (num == 2 && brick[ghost.y][ghost.x-1] != 2) {
+				ghost.x --;
+			} else if (num == 3 && brick[ghost.y][ghost.x+1] != 2) {
+				ghost.x ++;
 			}
 		}
 		function moveGhost1(){
 			var num = Math.floor(Math.random()*4);
 
-			if (num == 0 && brick[ghost1.y/24+1][ghost1.x/24] != 2){
-				ghost1.y += 24;
-			} else if (num == 1 && brick[ghost1.y/24-1][ghost1.x/24] != 2) {
-				ghost1.y -= 24 ;
-			} else if (num == 2 && brick[ghost1.y/24][ghost1.x/24-1] != 2) {
-				ghost1.x -= 24;
-			} else if (num == 3 && brick[ghost1.y/24][ghost1.x/24+1] != 2) {
-				ghost1.x += 24;
+			if (num == 0 && brick[ghost1.y+1][ghost1.x] != 2){
+				ghost1.y ++;
+			} else if (num == 1 && brick[ghost1.y-1][ghost1.x] != 2) {
+				ghost1.y --;
+			} else if (num == 2 && brick[ghost1.y][ghost1.x-1] != 2) {
+				ghost1.x --;
+			} else if (num == 3 && brick[ghost1.y][ghost1.x+1] != 2) {
+				ghost1.x ++;
 			}
 		}
 		function moveGhost2(){
 			var num = Math.floor(Math.random()*4);
 
-			if (num == 0 && brick[ghost2.y/24+1][ghost2.x/24] != 2){
-				ghost2.y += 24;
-			} else if (num == 1 && brick[ghost2.y/24-1][ghost2.x/24] != 2) {
-				ghost2.y -= 24;
-			} else if (num == 2 && brick[ghost2.y/24][ghost2.x/24-1] != 2) {
-				ghost2.x -= 24;
-			} else if (num == 3 && brick[ghost2.y/24][ghost2.x/24+1] != 2) {
-				ghost2.x += 24;
+			if (num == 0 && brick[ghost2.y+1][ghost2.x] != 2){
+				ghost2.y ++;
+			} else if (num == 1 && brick[ghost2.y-1][ghost2.x] != 2) {
+				ghost2.y --;
+			} else if (num == 2 && brick[ghost2.y][ghost2.x-1] != 2) {
+				ghost2.x --;
+			} else if (num == 3 && brick[ghost2.y][ghost2.x+1] != 2) {
+				ghost2.x ++;
 			}
 		}
 		function moveGhost3(){
 			var num = Math.floor(Math.random()*4);
 
-			if (num == 0 && brick[ghost3.y/24+1][ghost3.x/24] != 2){
-				ghost3.y += 24;
-			} else if (num == 1 && brick[ghost3.y/24-1][ghost3.x/24] != 2) {
-				ghost3.y -= 24 ;
-			} else if (num == 2 && brick[ghost3.y/24][ghost3.x/24-1] != 2) {
-				ghost3.x -= 24;
-			} else if (num == 3 && brick[ghost3.y/24][ghost3.x/24+1] != 2) {
-				ghost3.x += 24;
+			if (num == 0 && brick[ghost3.y+1][ghost3.x] != 2){
+				ghost3.y ++;
+			} else if (num == 1 && brick[ghost3.y-1][ghost3.x] != 2) {
+				ghost3.y -- ;
+			} else if (num == 2 && brick[ghost3.y][ghost3.x-1] != 2) {
+				ghost3.x --;
+			} else if (num == 3 && brick[ghost3.y][ghost3.x+1] != 2) {
+				ghost3.x ++;
 			}
 		}
 		function moveGhost4(){
 			var num = Math.floor(Math.random()*4);
 
-			if (num == 0 && brick[ghost4.y/24+1][ghost4.x/24] != 2){
-				ghost4.y += 24;
-			} else if (num == 1 && brick[ghost4.y/24-1][ghost4.x/24] != 2) {
-				ghost4.y -= 24 ;
-			} else if (num == 2 && brick[ghost4.y/24][ghost4.x/24-1] != 2) {
-				ghost4.x -= 24;
-			} else if (num == 3 && brick[ghost4.y/24][ghost4.x/24+1] != 2) {
-				ghost4.x += 24;
+			if (num == 0 && brick[ghost4.y+1][ghost4.x] != 2){
+				ghost4.y ++;
+			} else if (num == 1 && brick[ghost4.y-1][ghost4.x] != 2) {
+				ghost4.y --;
+			} else if (num == 2 && brick[ghost4.y][ghost4.x-1] != 2) {
+				ghost4.x --;
+			} else if (num == 3 && brick[ghost4.y][ghost4.x+1] != 2) {
+				ghost4.x ++;
 			}
 		}
 	
@@ -419,34 +426,34 @@
 		}
 
 		document.onkeydown = function(e){
-			if(e.keyCode == 37 && brick[pacman.y/24][pacman.x/24-1] != 2){
-				pacman.x -= 24;
-			}else if(e.keyCode == 38 && brick[pacman.y/24-1][pacman.x/24] != 2){
-				pacman.y -= 24;
-			}else if(e.keyCode == 39 && brick[pacman.y/24][pacman.x/24+1] != 2){
-				pacman.x += 24;
-			}else if(e.keyCode == 40 && brick[pacman.y/24+1][pacman.x/24] != 2){
-				pacman.y += 24;
+			if(e.keyCode == 37 && brick[pacman.y][pacman.x-1] != 2){
+				pacman.x --;
+			}else if(e.keyCode == 38 && brick[pacman.y-1][pacman.x] != 2){
+				pacman.y --;
+			}else if(e.keyCode == 39 && brick[pacman.y][pacman.x+1] != 2){
+				pacman.x ++;
+			}else if(e.keyCode == 40 && brick[pacman.y+1][pacman.x] != 2){
+				pacman.y ++;
 			}
 			displayPacman();
 
-			if (brick[pacman.y/24][pacman.x/24] == 1){
-				brick[pacman.y/24][pacman.x/24] = 0;
+			if (brick[pacman.y][pacman.x] == 1){
+				brick[pacman.y][pacman.x] = 0;
 				displayBrick();
 				score += 100;
 				displayScore();
-			} else if (brick[pacman.y/24][pacman.x/24]==3){
-				brick[pacman.y/24][pacman.x/24] = 0;
+			} else if (brick[pacman.y][pacman.x]==3){
+				brick[pacman.y][pacman.x] = 0;
 				displayBrick();
 				score += 50;
 				displayScore();
-			} else if (brick[pacman.y/24][pacman.x/24]==brick[ghost.y/24][ghost.x/24]||
-					   brick[pacman.y/24][pacman.x/24]==brick[ghost1.y/24][ghost1.x/24]||
-					   brick[pacman.y/24][pacman.x/24]==brick[ghost2.y/24][ghost2.x/24]||
-					   brick[pacman.y/24][pacman.x/24]==brick[ghost3.y/24][ghost3.x/24]||
-					   brick[pacman.y/24][pacman.x/24]==brick[ghost4.y/24][ghost4.x/24]){
-				pacman.x = 24;
-				pacman.y = 24;
+			} else if ((pacman.x == ghost.x && pacman.y == ghost.y)||
+					   (pacman.x == ghost1.x && pacman.y == ghost1.y)||
+					   (pacman.x == ghost2.x && pacman.y == ghost2.y)||
+					   (pacman.x == ghost3.x && pacman.y == ghost3.y)||
+					   (pacman.x == ghost4.x && pacman.y == ghost4.y)){
+				pacman.x = 1;
+				pacman.y = 1;
 				life -= 1;
 				displayLife();
 				if (life == 0) {
@@ -480,34 +487,35 @@
 		document.getElementById('start').onclick = function(){
 			setInterval(init, 500);
 			document.onkeydown = function(e){
-				if(e.keyCode == 37 && brick[pacman.y/24][pacman.x/24-1] != 2){
-					pacman.x -= 24;
-				}else if(e.keyCode == 38 && brick[pacman.y/24-1][pacman.x/24] != 2){
-					pacman.y -= 24;
-				}else if(e.keyCode == 39 && brick[pacman.y/24][pacman.x/24+1] != 2){
-					pacman.x += 24;
-				}else if(e.keyCode == 40 && brick[pacman.y/24+1][pacman.x/24] != 2){
-					pacman.y += 24;
+				if(e.keyCode == 37 && brick[pacman.y][pacman.x-1] != 2){
+					pacman.x --;
+				}else if(e.keyCode == 38 && brick[pacman.y-1][pacman.x] != 2){
+					pacman.y --;
+				}else if(e.keyCode == 39 && brick[pacman.y][pacman.x+1] != 2){
+					pacman.x ++;
+				}else if(e.keyCode == 40 && brick[pacman.y+1][pacman.x] != 2){
+					pacman.y ++;
 				}
 				displayPacman();
 
-				if (brick[pacman.y/24][pacman.x/24] == 1){
-					brick[pacman.y/24][pacman.x/24] = 0;
+				if (brick[pacman.y][pacman.x] == 1){
+					brick[pacman.y][pacman.x] = 0;
 					displayBrick();
 					score += 100;
 					displayScore();
-				} else if (brick[pacman.y/24][pacman.x/24]==3){
-					brick[pacman.y/24][pacman.x/24] = 0;
+				} else if (brick[pacman.y][pacman.x] == 3){
+					brick[pacman.y][pacman.x] = 0;
 					displayBrick();
 					score += 50;
 					displayScore();
-				} else if (brick[pacman.y/24][pacman.x/24]==brick[ghost.y/24][ghost.x/24]||
-						   brick[pacman.y/24][pacman.x/24]==brick[ghost1.y/24][ghost1.x/24]||
-						   brick[pacman.y/24][pacman.x/24]==brick[ghost2.y/24][ghost2.x/24]||
-						   brick[pacman.y/24][pacman.x/24]==brick[ghost3.y/24][ghost3.x/24]||
-						   brick[pacman.y/24][pacman.x/24]==brick[ghost4.y/24][ghost4.x/24]){
-					pacman.x = 24;
-					pacman.y = 24;
+				} else if  ((pacman.x == ghost.x && pacman.y == ghost.y) ||
+							(pacman.x == ghost1.x && pacman.y == ghost1.y)||
+							(pacman.x == ghost2.x && pacman.y == ghost2.y)||
+							(pacman.x == ghost3.x && pacman.y == ghost3.y)||
+							(pacman.x == ghost4.x && pacman.y == ghost4.y)){
+					pacman.x = 1;
+					pacman.y = 1;
+					displayPacman();
 					life -= 1;
 					displayLife();
 					if (life == 0) {
@@ -515,11 +523,170 @@
 						life = 3;
 						score = 0;
 					}
+				}
+			}
+			console.log(pacman);
+			console.log(ghost, ghost1, ghost2, ghost3, ghost4);
+		}
+		
+	</script>
+</body>
+</html> -->
 
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pacman Game</title>
+	<style type="text/css">
+		#container{
+			background-color: black;
+			width: 840px;
+			position: absolute;
+			margin: 50px 0 0 50px;
+		}
+		.score{
+			color: black;
+			margin-top: 10px;
+			font-size: 30px;
+		}
+		.lives{
+			color: black;
+			margin-top: 10px;
+			font-size: 30px;
+		}
+		.blank, .brick, .coin, .cherry, .pacman, .pinky, .inky, .blinky, .clyde, td{
+			width: 30px;
+			height: 30px;
+		}
+		.brick{
+			background-color: blue;
+		}
+		.coin{
+			background-image: url('apple-20.png');
+		}
+		.cherry{
+			background-image: url('cherries.png');
+		}
+		.pacman{
+			background-image: url('pacman_R.gif');
+		}
+		.pinky{
+			background-image: url('Pinky_s.gif');
+		}
+		td{
+			position: relative;
+		}
+		table{
+			width: 840px;
+			height: 930px;
+			border-spacing: 0px;
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+	<div id="score"></div>
+	<div id="lives"></div>
+	<div id="container">
+		<table id="world"></table>
+	</div>
+	<script type="text/javascript">
+		var model = {
+			left: {
+				x:-1, 
+				y: 0
+			},
+			up: {
+				x: 0,
+				y:-1
+			},
+			right: {
+				x: 1, 
+				y: 0
+			},
+			down: {
+				x: 0, 
+				y: 1
+			},
+			world: [
+			  // 28w * 31l
+			    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+			    1,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,1,
+			    1,2,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,1,2,1,
+			    1,2,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,1,2,1,
+			    1,2,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,1,2,1,
+			    1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,
+			    1,2,1,1,1,1,2,1,1,2,1,1,1,1,1,1,1,1,2,1,1,2,1,1,1,1,2,1,
+			    1,2,1,1,1,1,2,1,1,2,1,1,1,1,1,1,1,1,2,1,1,2,1,1,1,1,2,1,
+			    1,2,2,2,2,2,2,1,1,2,2,2,2,1,1,2,2,2,2,1,1,2,2,2,2,2,2,1,
+			    1,1,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,1,1,1,
+			    1,1,1,1,1,1,2,1,1,1,1,1,2,0,0,2,1,1,1,1,1,2,1,1,1,1,1,1,
+			    1,1,1,1,1,1,2,1,1,0,0,0,0,0,0,0,0,0,0,1,1,2,1,1,1,1,1,1,
+			    1,1,1,1,1,1,2,1,1,0,1,1,1,1,0,1,1,1,0,1,1,2,1,1,1,1,1,1,
+			    1,1,1,1,1,1,2,1,1,0,1,1,1,1,0,1,1,1,0,1,1,2,1,1,1,1,1,1,
+			    1,0,0,0,0,1,2,2,2,0,1,1,1,1,0,1,1,1,0,2,2,2,1,0,0,0,0,1,
+			    1,1,1,1,1,1,2,1,1,0,1,1,1,1,1,1,1,1,0,1,1,2,1,1,1,1,1,1,
+			    1,1,1,1,1,1,2,1,1,0,1,1,1,1,1,1,1,1,0,1,1,2,1,1,1,1,1,1,
+			    1,1,1,1,1,1,2,1,1,0,0,0,0,0,0,0,0,0,0,1,1,2,1,1,1,1,1,1,
+			    1,1,1,1,1,1,2,1,1,0,1,1,1,1,1,1,1,1,0,1,1,2,1,1,1,1,1,1,
+			    1,1,1,1,1,1,2,1,1,0,1,1,1,1,1,1,1,1,0,1,1,2,1,1,1,1,1,1,
+			    1,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,1,
+			    1,2,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,1,2,1,
+			    1,2,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,1,2,1,
+			    1,2,2,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,2,2,1,
+			    1,1,1,2,1,1,2,1,1,2,1,1,1,1,1,1,1,1,2,1,1,2,1,1,2,1,1,1,
+			    1,1,1,2,1,1,2,1,1,2,1,1,1,1,1,1,1,1,2,1,1,2,1,1,2,1,1,1,
+			    1,2,2,2,2,2,2,1,1,2,2,2,2,1,1,2,2,2,2,1,1,2,2,2,2,2,2,1,
+			    1,2,1,1,1,1,1,1,1,1,1,1,2,1,1,2,1,1,1,1,1,1,1,1,1,1,2,1,
+			    1,2,1,1,1,1,1,1,1,1,1,1,2,1,1,2,1,1,1,1,1,1,1,1,1,1,2,1,
+			    1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,
+			    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+			],
+			pacman: {
+				name: "pacman",
+				x: 1,
+				y: 7,
+				last_x: 2,
+				last_y: 7,
+				rotation: 0
+			},
+			pinky: {
+				name: "pinky",
+				x: 14,
+				y: 12,
+				last_x: 14,
+				last_y: 13,
+				s_target_x: 1,
+				s_target_y: 1,
+				a_target_x: 0,
+				a_target_y: 0,
+				rotation: 0
+			}, 
+			score: 0,
+			life: 0
+		};
+
+		var view = {
+			set_box_class = function(){
+				var that = this;
+				switch (model.world[that]){
+					case 0:
+						document.getElementById(that).className = 'blank';
+						break;
+					case 1: 
+						document.getElementById(that).className = 'brick';
+						break;
+					case 2:
+						document.getElementById(that).className = 'coin';
+						break;
+					case 3:
+						document.getElementById(that).className = 'cherry';
+						break;
+					default;
+						break;
 				}
 			}
 		}
-		
 	</script>
 </body>
 </html>

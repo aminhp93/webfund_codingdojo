@@ -1,171 +1,3 @@
-<!-- <html>
-<head>
-	<title>1942 Game</title>
-
-<style type="text/css">
-	body{
-		background-color:black;
-	}
-	#container{
-		background: url('background.jpg');
-		width:1000px;
-		height:550px;
-	}
-	#hero{
-		background: url('1942.gif');
-		background-position: -85px -180px;
-		width:28px;
-		height:28px;
-		position:absolute;
-	}
-	.enemy1{
-		background: url('1942.gif');
-		background-position: -30px -10px;
-		width:28px;
-		height:28px;
-		position:absolute;
-	}
-	.bullet{
-		background: url('1942.gif');
-		background-position: -185px -400px;
-		width:18px;
-		height:18px;
-		position:absolute;
-	}
-	#score{
-		position:absolute;
-		border:10px solid red;
-		top:20px;
-		left:800px;
-		background-color:white;
-		padding:10px;
-		font-size:30px;
-		font-family: Arial;	
-	}
-</style>
-</head>
-<body>
-	<div id='container'>
-		<div id='hero' style='top:300px; left:300px;'></div>
-		<div id='enemies'>
- --><!-- 			<div class='enemy1' style='top:100px; left:100px;'></div>
-			<div class='enemy1' style='top:100px; left:200px;'></div>
-			<div class='enemy1' style='top:100px; left:300px;'></div>
-			<div class='enemy1' style='top:100px; left:400px;'></div>
- -->	<!-- </div>
-		<div id='bullets'>
-			<div class='bullet' style='top:150px; left:200px;'></div>
-			<div class='bullet' style='top:250px; left:200px;'></div>
-			<div class='bullet' style='top:350px; left:200px;'></div>
-			<div class='bullet' style='top:450px; left:200px;'></div>
-		</div>	
-	</div>
-
-	<div id='score'>100</div>
-
-
-
-<script>
-	var hero = {
-		x: 300,
-		y: 300
-	}
-
-	var enemies = [{x:50, y:50}, {x:250, y:50}, {x:450, y:250}];
-
-	var bullets = [];
-
-	function displayHero(){
-		document.getElementById('hero').style['top'] = hero.y + "px";
-		document.getElementById('hero').style['left'] = hero.x + "px";
-
-	}
-
-	function displayEnemies(){
-		var output = '';
-		for (var i=0; i<enemies.length; i++){
-			output += "<div class='enemy1' style='top:" + enemies[i].y +"px; left:" + enemies[i].x + "px;'></div>";
-
-		}
-		// console.log(output);
-		document.getElementById('enemies').innerHTML = output;
-	}
-
-	function moveEnemies(){
-		for (var i=0; i<enemies.length; i++){
-			enemies[i].y += 5;
-
-			if (enemies[i].y > 550){
-				// console.log('enemy', i, 'went out of bounds');
-				enemies[i].y = 0;
-				enemies[i].x = Math.random()*500;
-			}
-		}
-	};
-
-	function moveBullets(){
-		for (var i=0; i<bullets.length; i++){
-			bullets[i].y -= 5;
-
-			if(bullets[i].y<0){
-				bullets[i] = bullets[bullets.length-1 ];
-				bullets.pop();
-			}
-		}
-	}
-
-	function displayBullets(){
-		var output = '';
-		for (var i=0; i< bullets.length; i++){
-			output += "<div class='bullet' style='top:" + bullets[i].y +"px; left:" + bullets[i].x + "px;'></div>"	
-		}
-		document.getElementById('bullets').innerHTML = output;
-	}
-
-	function detectCollision(){
-		for (var i=0; i< bullets.length; i++){
-			for (var j=0; j<enemies.length; j++){
-				if (Math.abs(bullets[i].x - enemies[i].x) < 5 && Math.abs(bullets[j].y - enemies[j].y < 5){
-					
-				}
-			}
-		}
-	}
-
-	function gameLoop(){
-	 	displayHero();
-		moveEnemies();
-		displayEnemies();
-		moveBullets();
-		displayBullets();
-
-
-	}
-
-	setInterval(gameLoop, 100); 
-
-	document.onkeydown = function(e){
-		if (e.keyCode == 37) {
-			hero.x -= 10;
-		} else if (e.keyCode == 39){
-			hero.y += 10;
-		} else if (e.keyCode == 32){
-			bullets.push({x: hero.x+7, y: hero.y-10});
-			displayBullets();
-			// console.log(bullets);
-		}
-		// console.log(hero);
-		displayHero();
-		console.log(e.keyCode);
-
-	}
-
-
-</script>
-
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -266,23 +98,16 @@
 	<div id="sample"></div>
 
 	<script type="text/javascript">
-	 // (easy) Get the hero to move up/down/left/right
-	 // (easy) Change the background of the game
-	 // (easy) Get 7 enemies to show up instead of 4 at a time
-	 // (intermediate) Get another type of enemy airplane to show up
-	 // (advanced) Collision Detection for the airplanes – when the hero collides with the enemy, have your score go down by 500.
-	 // (advanced) Collision Detection for the bullet – Have the score go up by 10 when an enemy is struck down.
-	 // (advanced) Get the enemy to explode when it is hit
-	 // (advanced) When the bullet hits, make a sound.
+
 		var hero = {x: 600, y: 700}
 		var enemies = [{x:100, y:120},{x:120, y:150},{x:140, y:180},{x:160, y:180},{x:180, y:100},{x:200, y:140},{x:220, y:160}, {x:240, y:150}, {x:260, y:170}, {x:280, y:120}];
 		
 		var bullets = [];
+		var bulletsType = [];
 		var score = 0;
 		var life = 3;
 		var hit = 0;
-		var bulletNum = 1;
-		var countBullet = 0;
+		var bulletNum = "bullet";
 		var speed = 100;
 
 		function displayHero(){
@@ -311,32 +136,26 @@
 			}
 		}
 
-		function displayBullets(bulletNum){
+		function displayBullets(){
 			output = '';
-			for (var i=0; i<bullets.length; i++){
-				if (bulletNum == 1) {				
-					output += '<div class="bullet" style="top:' + bullets[i].y + 'px; left:' + bullets[i].x + 'px;""></div>';
-				} 
-				else if (bulletNum == 2) {
-					output += '<div class="bullet1" style="top:' + bullets[i].y + 'px; left:' + bullets[i].x + 'px;""></div>';
-				}
+			for (var i=0; i<bullets.length; i++){				
+					output += '<div class=' + bulletsType[i] + ' style="top:' + bullets[i].y + 'px; left:' + bullets[i].x + 'px;""></div>';
 			}
 			document.getElementById('bullets').innerHTML = output;
-			console.log(output);
-		}
-		
+		};
+	
 		function moveBullets(){
 			for (var i=0; i<bullets.length; i++){
 				bullets[i].y -= 5;
-
+ 
 				if (bullets[i].y < 0 || hit == 1){
+					bulletsType[i] = bulletsType[bulletsType.length - 1];
+					bulletsType.pop();
 					bullets[i] = bullets[bullets.length - 1];
 					bullets.pop();
-					countBullet -= 1;
 					hit = 0;
 				}
 			}
-			console.log(countBullet);
 		}
 
 		function displayScore(){
@@ -381,7 +200,7 @@
 			moveEnemies();
 			displayEnemies();
 			moveBullets();
-			displayBullets(bulletNum);
+			displayBullets();
 			displayScore();
 			displayLife();
 			heroDestroy();
@@ -411,23 +230,18 @@
 					hero.y += 10;
 				} else if (e.keyCode == 32) {
 					bullets.push({x:hero.x, y:hero.y});
-					displayBullets(bulletNum);
+					bulletsType.push(bulletNum);
+					displayBullets();
 					moveBullets();
-					countBullet += 1;
 				} 
 				else if (e.keyCode == 93) {
-					if (bulletNum == 1){
-						bulletNum = 2;
-					} else if (bulletNum == 2) {
-						bulletNum = 1;
+					if (bulletNum == "bullet"){
+						bulletNum = "bullet1";
+					} else if (bulletNum == "bullet1") {
+						bulletNum = "bullet";
 					}	
 				}
 				displayHero();
-				console.log(e.keyCode);
-				console.log(bulletNum);
-				console.log(bullets);
-				console.log(countBullet);
-
 			}
 		}
 

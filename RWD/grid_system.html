@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="">
+		*{
+			box-sizing: border-box;
+		}
+		#wrapper {
+		    width: 90%;
+		    margin-left: auto;
+		    margin-right: auto;
+		}
+		#main-content { background-color: #D8D8DC; }
+		#sidebar { background-color: #828284; }
+		.row{
+			clear: both;
+		}
+
+		/*Small sized screens*/
+		@media only screen and (max-width: 480px ){
+			.twelve-s{width: 100%;}
+		}
+
+		/*Mediium sized screens*/
+		@media only screen and (min-width: 481px){
+			.four-m {width: 33.333333%}
+			.five-m {width: 41.666666%}
+			.seven-m {width: 58.333333%}
+			.eight-m {width: 66.666666%}
+		}
+
+		/*Larget sized screens*/
+		@media only screen and (min-width: 1024px){
+			.four-l {width: 33.3333333%}
+			.eight-l {width: 66.6666666%}
+		}
+		.column{
+			float:left;
+			padding-right: 20px;
+		}
+		.row {
+		    padding-left: 20px;
+		    clear: both;
+		}
+		.content { padding: 20px; }
+ 
+	</style>
+</head>
+<body>
+	<div id="wrapper">
+		<h1>Awesome Company Brand</h1>
+		<div class="row">
+			<div class="column twelve-s seven-m eight-l">
+				<div id="main-content" class="content">
+					<h4>Header</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+			</div>
+			<div class="column twelve-s five-m four-l">
+				<div id="sidebar" class="content">
+					<h4>Header</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

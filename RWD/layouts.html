@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Layouts</title>
+	<style type="text/css">
+		*{
+			margin: 0px;
+		}
+		#header{
+			background-color: gray;
+		}
+		#navigation li{
+			display: inline-block;
+			margin: 10px 20px ;
+		}
+		#content{
+
+		}
+		.col-1, .col-2, .col-3, .col-4{
+			float: left;
+			vertical-align: top;
+			padding: 5px;
+			box-sizing: border-box;
+		}
+		@media only screen and (min-width: 1010px){
+			.col-1, .col-2, .col-3, .col-4{
+				width: 25%;
+			}
+		}
+		@media only screen and (max-width: 1011px){
+			.col-1, .col-2, .col-3{
+				width: 33.3333333%
+			}
+			.col-4{
+				width: 100%;
+			}
+			#navigation{
+				display: none;
+		}
+		
+	</style>
+</head>
+<body>
+	<div id="header">
+		<h1>Header</h1>
+		<h2>Subtitle</h2>
+	</div>
+	<div id="navigation">
+		<ul>
+			<li><a href="">Home</a></li>
+			<li><a href="">About Us</a></li>
+			<li><a href="">Contact Us</a></li>
+			<li><a href="">Videos</a></li>
+			<li><a href="">Pricing</a></li>
+			<li><a href="">Something</a></li>
+			<li><a href="">Somethings</a></li>
+			<li><a href="">Somethingss</a></li>
+			<li><a href="">Somethingsss</a></li>
+		</ul>
+	</div>
+	<div id="content">
+		<div class="col-1">
+			<h3>Coffee Ipsum</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat.</p>
+		</div>
+		<div class="col-2">
+			<h3>Coffee Ipsum</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+		<div class="col-3">
+			<h3>Coffee Ipsum</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+		<div class="col-4">
+			<h3>Coffee Ipsum</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+	</div>
+</body>
+</html>

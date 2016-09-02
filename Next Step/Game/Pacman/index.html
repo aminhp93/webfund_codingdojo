@@ -7,13 +7,11 @@
 			margin: 0px;
 			padding: 0px;
 		}
-		#content{
-			background-image: url('5334124871_88fcc83830_o.jpg');
-			height: 700px;
+		body{
+			background-color: black;
 		}
 		.row {
 			height: 20px;
-			/*margin: 2px;*/
 		}
 		.row div{
 			width: 20px;
@@ -42,7 +40,7 @@
 			background-image: url('pacman_R.gif');
 		}
 		#ghost, #ghost1, #ghost2, #ghost3, #ghost4{
-			background-color: black;
+			background-image: url('ghost.gif');
 		}
 		#right_container{
 			position: absolute;
@@ -64,6 +62,9 @@
 			height: 50px;
 			background-color: orange;
 			font-size: 30px;
+		}
+		#start{
+			cursor: pointer;
 		}
 	</style>
 </head>
@@ -114,8 +115,8 @@
 			[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
 			[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],		
 			];
-		var pacman = {x:1, y:1};
-		var ghost = {x:5, y: 5};
+		var pacman = {x: 1, y: 1};
+		var ghost =  {x: 5, y: 5};
 		var ghost1 = {x: 6, y: 6};
 		var ghost2 = {x: 7, y: 6};
 		var ghost3 = {x: 8, y: 8};
@@ -165,14 +166,12 @@
 				}
 				output += '\n</div>';
 			}
-			// console.log(output);
 			document.getElementById('world').innerHTML = output;
 		}
 
 		function displayPacman(){
 			document.getElementById('pacman').style.top = pacman.y*marginNum + 'px';
 			document.getElementById('pacman').style.left = pacman.x*marginNum + 'px';	
-			console.log(pacman);
 		}
 
 		var arr1 = ['ghost', 'ghost1', 'ghost2', 'ghost3', 'ghost4'];
@@ -200,7 +199,6 @@
 				}
 			}
 		}
-		
 
 		function displayScore(){
 			document.getElementById('score').innerHTML = score;
@@ -238,39 +236,39 @@
 					pacman.y ++;
 				}
 				displayPacman();
-
-				if (brick[pacman.y][pacman.x] == 1){
-					brick[pacman.y][pacman.x] = 0;
-					displayBrick();
-					score += 100;
-					displayScore();
-				} else if (brick[pacman.y][pacman.x] == 3){
-					brick[pacman.y][pacman.x] = 0;
-					displayBrick();
-					score += 50;
-					displayScore();
-				} else if  (((pacman.x - ghost.x == 0)  && (pacman.y - ghost.y == 0)) ||
-							((pacman.x - ghost1.x == 0) && (pacman.y - ghost1.y == 0))||
-							((pacman.x - ghost2.x == 0) && (pacman.y - ghost2.y == 0))||
-							((pacman.x - ghost3.x == 0) && (pacman.y - ghost3.y == 0))||
-							((pacman.x - ghost4.x == 0) && (pacman.y - ghost4.y == 0))){
-					pacman.x = 1;
-					pacman.y = 1;
-					displayPacman();
-					life -= 1;
-					displayLife();
-					if (life == 0) {
-						alert('Game Over');
-						life = 3;
-						score = 0;
-					}
-				}
 			}
-			console.log(pacman);
-			console.log(ghost, ghost1, ghost2, ghost3, ghost4);
+			setInterval(checkHit, 5);
 		}
 
-
+		function checkHit(){
+			if (brick[pacman.y][pacman.x] == 1){
+				brick[pacman.y][pacman.x] = 0;
+				displayBrick();
+				score += 100;
+				displayScore();
+			} else if (brick[pacman.y][pacman.x] == 3){
+				brick[pacman.y][pacman.x] = 0;
+				displayBrick();
+				score += 50;
+				displayScore();
+			} else if  (((pacman.x - ghost.x == 0) && (pacman.y - ghost.y == 0))
+					  ||((pacman.x - ghost1.x == 0) && (pacman.y - ghost1.y == 0))
+					  ||((pacman.x - ghost2.x == 0) && (pacman.y - ghost2.y == 0))
+					  ||((pacman.x - ghost3.x == 0) && (pacman.y - ghost3.y == 0))
+					  ||((pacman.x - ghost4.x == 0) && (pacman.y - ghost4.y == 0)))
+			{
+				pacman.x = 1;
+				pacman.y = 1;
+				displayPacman();
+				life -= 1;
+				displayLife();
+				if (life == 0) {
+					alert('Game Over');
+					life = 3;
+					score = 0;
+				}
+			}
+		}
 
 	</script>
 </body>

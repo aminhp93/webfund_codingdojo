@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Pacman-complex</title>
+	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		body{
+			background-color: black;
+		}
+		#container{
+			margin: 0 auto;
+			width: 540px;
+			border: 1px solid silver;
+		}
+		#world{
+			border-bottom: 1px solid silver;
+		}
+		.row{
+			height: 27px;
+			background-color: blue;
+		}
+		.point, .tile3, .tile5, .tile6, .tile9, .tile10, .empty{
+			width: 27px;
+			height: 27px;
+			float: left;
+		}
+		.point{
+			background-image: url('point.gif');
+		}
+		.tile3{
+			background-image: url('tile3.gif');
+		}
+		.tile5{
+			background-image: url('tile5.gif');
+		}
+		.tile6{
+			background-image: url('tile6.gif');
+		}
+		.tile9{
+			background-image: url('tile9.gif');
+		}
+		.tile10{
+			background-image: url('tile10.gif');
+		}
+		.empty{
+			background-color: black;
+		}
+		#pacman, #ghost1, #ghost2, #ghost3, #ghost4{
+			position: absolute;
+			width: 27px;
+			height: 27px;
+		}
+		#pacman{
+			background-image: url('r1.gif');
+		}
+		#ghost1{
+			background-image: url('g21.gif');
+		}
+		#ghost2{
+			background-image: url('g31.gif');
+		}
+		#ghost3{
+			background-image: url('g41.gif');
+		}
+		#ghost4{
+			background-image: url('g12.gif');
+		}
+		#right_container{
+			background-color: black;
+			margin: 0 auto;
+			width: 200px;
+			border-left: 1px solid silver;
+			border-right: 1px solid silver;
+			padding: 10px;
+			padding-bottom: 25px;
+			text-align: center;
+		}
+			#right_container h3{
+				display: inline-block;
+			}
+		#score{
+			height: 30px;
+			color: white;
+		}
+		#lives{
+			height: 30px;
+			color: white;
+			margin-bottom: 10px;
+		}
+		#new_game{
+			height: 30px;
+			border: 1px solid orange;
+			border-radius: 10px;
+			display: inline;
+			color: orange;
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="world">
+			
+		</div>
+		<div id="right_container">
+			<div id="score"></div>
+			<div id="lives"></div>
+			<div id="new_game">New Game</div>
+		</div>
+	</div>
+	<div id="pacman"></div>
+	<div id="ghost1"></div>
+	<div id="ghost2"></div>
+	<div id="ghost3"></div>
+	<div id="ghost4"></div>
+	
+	<script type="text/javascript">
+		var width = window.innerWidth;
+
+		var world = [
+		[5,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,6],
+		[2,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+		[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+		[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+		[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+		[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+		[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+		[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+		[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+		[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+		[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+		[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+		[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+		[3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,4]
+		];
+
+		var pacman = {x: 1, y: 1};
+		var ghost1 = {x: 7, y: 7};
+		var ghost2 = {x: 7, y: 6};
+		var ghost3 = {x: 8, y: 7};
+		var ghost4 = {x: 8, y: 6};
+		var score = 0;
+		var lives = 3;
+
+		function displayWorld(){
+			output = '';
+			for (var i = 0; i < world.length; i++){
+				output += '\n<div class="row">';
+				for (var j = 0; j < world[i].length; j++){
+					if (world[i][j] == 1){
+						output += '\n<div class="point"></div>'
+					} else if (world[i][j] == 2){
+						output += '\n<div class="tile3"></div>'
+					} else if (world[i][j] == 3){
+						output += '\n<div class="tile5"></div>'
+					} else if (world[i][j] == 4){
+						output += '\n<div class="tile6"></div>'
+					} else if (world[i][j] == 5){
+						output += '\n<div class="tile9"></div>'
+					} else if (world[i][j] == 6){
+						output += '\n<div class="tile10"></div>'
+					} else if (world[i][j] == 0){
+						output += '\n<div class="empty"></div>'
+					}
+				}
+				output += '\n</div>';
+			}
+			document.getElementById('world').innerHTML = output;
+		}
+
+		function displayPacman(){
+			document.getElementById('pacman').style.top = pacman.y * 27 +'px';
+			document.getElementById('pacman').style.left = pacman.x * 27 + (width-540)/2 + 'px';
+		}
+	
+
+
+		function displayScore(){
+			document.getElementById('score').innerHTML = '<h3>Score:</h3>\n' + score;
+		}
+
+		function displayLife(){
+			document.getElementById('lives').innerHTML = '<h3>Lives:</h3>\n' + lives;
+		}
+
+		function checkHit(){
+			
+		}
+		setInterval(checkHit, 5);
+
+
+		document.onkeydown = function(e){
+			setInterval(moveGhost, 1000);
+			if(e.keyCode == 37 && world[pacman.y][pacman.x - 1] != 2){
+				pacman.x --;
+			}else if(e.keyCode == 38 && world[pacman.y - 1][pacman.x] != 2){
+				pacman.y --;
+			}else if(e.keyCode == 39 && world[pacman.y][pacman.x + 1] != 2){
+				pacman.x ++;
+			}else if(e.keyCode == 40 && world[pacman.y + 1][pacman.x] != 2){
+				pacman.y ++;
+			}
+			displayPacman();
+
+			if (world[pacman.y][pacman.x] == 1){
+				world[pacman.y][pacman.x] = 0;
+				displayWorld();
+				score += 100;
+				displayScore();
+			} else if  (((pacman.x == ghost1.x) && (pacman.y == ghost1.y))||
+						((pacman.x == ghost2.x) && (pacman.y == ghost2.y))||
+				 		((pacman.x == ghost3.x) && (pacman.y == ghost3.y))||
+				 		((pacman.x == ghost4.x) && (pacman.y == ghost4.y))){
+				pacman.x = 1;
+				pacman.y = 1;
+				displayPacman();
+				lives -= 1;
+				displayLife();
+				if (lives == 0) {
+					alert('Game Over');
+					lives = 3;
+					score = 0;
+				}
+			}
+		}
+
+	
+		var arr1 = ['ghost1', 'ghost2', 'ghost3', 'ghost4'];
+		var arr2 = [ghost1, ghost2, ghost3, ghost4];
+		
+		function displayGhost(){
+			for (var i = 0; i < arr1.length; i++){
+				document.getElementById(arr1[i]).style.top = arr2[i].y * 27 + 'px';
+				document.getElementById(arr1[i]).style.left = arr2[i].x * 27 + (width-540)/2 + 'px';
+			}
+		}
+
+		function moveGhost(){
+			for (var i = 0; i < arr2.length; i++){		
+				var num = Math.floor(Math.random()*4);
+
+				if (num == 0 && world[arr2[i].y+1][arr2[i].x] != 2){
+					arr2[i].y ++;
+				} else if (num == 1 && world[arr2[i].y-1][arr2[i].x] != 2) {
+					arr2[i].y --;
+				} else if (num == 2 && world[arr2[i].y][arr2[i].x-1] != 2) {
+					arr2[i].x --;
+				} else if (num == 3 && world[arr2[i].y][arr2[i].x+1] != 2) {
+					arr2[i].x ++;
+				}
+			}
+		}
+		function init(){
+			moveGhost();
+			displayGhost();
+			displayPacman();
+			displayWorld();
+			displayScore();
+			displayLife();
+		}
+
+		setInterval(init, 300);
+
+	</script>
+</body>
+</html>

@@ -189,23 +189,6 @@
 
 		function checkHit(){
 			
-		}
-		setInterval(checkHit, 5);
-
-
-		document.onkeydown = function(e){
-			setInterval(moveGhost, 1000);
-			if(e.keyCode == 37 && world[pacman.y][pacman.x - 1] != 2){
-				pacman.x --;
-			}else if(e.keyCode == 38 && world[pacman.y - 1][pacman.x] != 2){
-				pacman.y --;
-			}else if(e.keyCode == 39 && world[pacman.y][pacman.x + 1] != 2){
-				pacman.x ++;
-			}else if(e.keyCode == 40 && world[pacman.y + 1][pacman.x] != 2){
-				pacman.y ++;
-			}
-			displayPacman();
-
 			if (world[pacman.y][pacman.x] == 1){
 				world[pacman.y][pacman.x] = 0;
 				displayWorld();
@@ -227,7 +210,21 @@
 				}
 			}
 		}
+		setInterval(checkHit, 5);
 
+
+		document.onkeydown = function(e){
+			if(e.keyCode == 37 && world[pacman.y][pacman.x - 1] != 2){
+				pacman.x --;
+			}else if(e.keyCode == 38 && world[pacman.y - 1][pacman.x] != 2){
+				pacman.y --;
+			}else if(e.keyCode == 39 && world[pacman.y][pacman.x + 1] != 2){
+				pacman.x ++;
+			}else if(e.keyCode == 40 && world[pacman.y + 1][pacman.x] != 2){
+				pacman.y ++;
+			}
+			displayPacman();
+		}
 	
 		var arr1 = ['ghost1', 'ghost2', 'ghost3', 'ghost4'];
 		var arr2 = [ghost1, ghost2, ghost3, ghost4];
@@ -254,6 +251,7 @@
 				}
 			}
 		}
+		
 		function init(){
 			moveGhost();
 			displayGhost();
@@ -263,7 +261,7 @@
 			displayLife();
 		}
 
-		setInterval(init, 300);
+		setInterval(init, 400);
 
 	</script>
 </body>
